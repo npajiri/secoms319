@@ -56,5 +56,27 @@
       "price": "$10.00",
       "text": "Elevate your living space with the perfect blend of comfort and style. Our luxurious rugs are meticulously crafted to transform your home into a cozy, inviting sanctuary. Whether you're looking to add warmth to your living room, redefine your bedroom's ambiance, or bring character to your dining area, our rugs offer a world of possibilities. Choose from a diverse range of sizes, patterns, and textures, from traditional to contemporary designs. These rugs not only provide a soft underfoot feel but also serve as a work of art for your floors. Embrace the soothing textures, vibrant colors, and quality craftsmanship that our rugs deliver. Make a statement and redefine your interior decor with our rugs - explore our collection today and let your home come alive with beauty and comfort."
     }
+  ],
+
+  "products3": [
+    {
+      "src": "images/mirror1.jpg",
+      "productName": "Large Living Room Mirror",
+      "price": "$30.00",  
+      "text": "Transform your living room into a haven of sophistication and style with the addition of our magnificent, large gold and brass framed mirror. This exquisite piece is not just a reflection of your space; it's a statement of your refined taste and attention to detail. The oversized mirror, framed in elegant gold and brass, creates a focal point that captures the essence of luxury and timeless elegance. Its generous size not only adds depth and dimension to your room but also amplifies the natural light, making your space feel more open and inviting. Whether you're striving for a classic, opulent look or a modern, glamorous ambiance, this mirror effortlessly complements any interior style. Elevate your living room to a new level of grandeur and sophistication - explore the possibilities with our large gold and brass framed mirror today."
+    },
+    {
+      "src": "images/mirror.jpg",
+      "productName": "Mirror",
+      "price": "$20.00",
+      "text": "Reflect your style and elevate your space with our exquisite mirrors. Each mirror is a masterpiece of craftsmanship and design, enhancing the aesthetics of your home while also creating an illusion of spaciousness and light. Whether you're aiming to make a statement in your entryway, enhance your bathroom's functionality, or add a touch of elegance to your bedroom, our mirrors offer a myriad of options. Choose from a diverse selection of shapes and frames, from vintage and ornate to sleek and modern. Experience the transformative power of these reflective masterpieces, which not only serve as functional essentials but also as captivating art pieces. Let your home shine and your decor flourish with our mirrors - explore our collection today and discover the reflection of your personal style."
+    },
+    {
+      "src": "images/mirror2.jpg",
+      "productName": "Brown Love mirror",
+      "price": "$30.00",
+      "text": "Enhance the aesthetic appeal of your living spaces with our captivating love-shaped mirror. This unique and beautifully crafted mirror adds a touch of romance and artistry to any room. Its heart shape symbolizes affection and warmth, making it the perfect addition to bedrooms, living rooms, or even entryways. The mirror not only reflects your image but also reflects your passion for exquisite design. Elevate the ambiance of your space and infuse it with love and style by incorporating this one-of-a-kind love-shaped mirror into your decor. Embrace the power of love and aesthetics in your home - discover the magic with our love-shaped mirror today."
+    }
   ]
+
 }
