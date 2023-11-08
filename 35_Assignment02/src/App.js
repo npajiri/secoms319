@@ -1,10 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { products } from "./products";
 import "./index.css";
 import "./bootstrap.min.css";
 import "./headers.css";
+import productsData from "./products.json";
+
 
 //This section prevents an error showing up:
 function throttle(f, delay) {
@@ -30,6 +32,23 @@ function App() {
   const [cartTotal, setCartTotal] = useState(0);
   const [formData, setFormData] = useState({});
   const [searchPhrase, setSearchPhrase] = useState("");
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const uniqueProducts = productsData.reduce((unique, product) => {
+      if (!unique.find((item) => item.id === product.id)) {
+        unique.push(product);
+      }
+      return unique;
+    }, []);
+    
+    const limitedProducts = uniqueProducts.slice(0, 9);
+
+    setProducts(limitedProducts);
+  }, []);
+
+  
+
 
   const showCheckout = () => {
     if (showComponent === "confirmation") {
@@ -102,45 +121,46 @@ function App() {
     // get the quantity or default to 0 if the product is not in the cart
     const quantity = productInCart ? productInCart.quantity : 0;
 
-    return (
-      <div key={index}>
-        <div className="col">
-          <div className="card shadow-sm">
-            <img src={require("./images/" + product.src)}></img>
 
-            <div className="card-body">
-              <strong>{product.productName}</strong>
-              <p className="card-text">{product.text}</p>
-              <div className="d-flex justify-content-between align-items-end">
-                <div className="btn-group">
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-outline-secondary"
-                    onClick={() => addProduct(product)}
-                  >
-                    +
-                  </button>
+  
+  
 
-                  <span className="btn btn-sm btn-outline-secondary">
-                    {quantity}
-                  </span>
-
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-outline-secondary"
-                    onClick={() => removeFromCart(product)}
-                  >
-                    -
-                  </button>
-                </div>
-                <small className="text-body-emphasis">${product.price}</small>
-              </div>
+  return (
+  <div>
+    <div className="col">
+      <div className="card shadow-sm">
+        <img src={require("./images/" + product.imageUrl)}></img>
+        <div className="card-body">
+          <strong>{product.productName}</strong>
+          <p className="card-text">{product.description}</p>
+          <div className="d-flex justify-content-between align-items-end">
+            <div className="btn-group">
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-secondary"
+                onClick={() => addProduct(product)}
+              >
+                +
+              </button>
+              <span className="btn btn-sm btn-outline-secondary">
+                {quantity}
+              </span>
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-secondary"
+                onClick={() => removeFromCart(product)}
+              >
+                -
+              </button>
             </div>
+            <small className="text-body-emphasis">${product.price}</small>
           </div>
         </div>
       </div>
-    );
-  });
+    </div>
+  </div>
+);
+});
 
   const Index = () => {
     return (
@@ -253,7 +273,8 @@ function App() {
     };
 
     const validateCardNumber = (number) => {
-      const re = /^[0-9]{16}$/;
+      // const re = /^[0-9]{16}$/;
+      const re = /^[0-9]{4}\-[0-9]{4}\-[0-9]{4}\-[0-9]{4}$/;
       return re.test(number);
     };
 
@@ -494,6 +515,34 @@ function App() {
                           placeholder="XXXX-XXXX-XXXX-XXXX"
                           value={values.cardNumber}
                           onChange={handleChange}
+
+                          //cardnumber format start 
+
+                          onInput={function cardForm() {
+                            const cardNum= document.getElementById("cardNumber");
+                            let currentVal =cardNum.value
+
+                            function isNumeric (n) {
+                              return !isNaN(parseFloat(n)) && isFinite(n)
+                              }
+
+                            currentVal = currentVal.replace(/-/g, '')
+                            let newVal = ''
+                            for (var i = 0, nums = 0; i < currentVal.length; i++) {
+                            if (nums != 0 && nums % 4 == 0) {
+                            newVal += '-'
+                            }
+                            newVal += currentVal[i]
+                            if (isNumeric(currentVal[i])) {
+                            nums++
+                            }
+                            }
+
+                            cardNum.value = newVal                                  
+                      }}
+
+                          //cardnumber format end
+
                           required
                         />
                         {errors.cardNumber && (
@@ -658,5 +707,10 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
 
 
